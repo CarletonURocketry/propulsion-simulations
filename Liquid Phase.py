@@ -12,7 +12,7 @@ gas = 'CO2' #either CO2 or N2O
 V_tank = 0.012#1.25 * math.pi / 4 * (0.15) ** 2  # m^3
 Cd_injector = 0.08# Discharge Coefficient of individual injector elements. see pg 279 of rocket propulsion elements
 A_injector = 0.000106029#(1.5*10**-3)**2/4*math.pi*60
-P_chamber = 101325#450/14.5*101325 #should be the pressure directly upstream of the injector
+P_chamber = 101325#450/14.5*101325 #should be the pressure directly downstream of the injector
 timespan = 10#s
 timestep = 0.001#s
 
