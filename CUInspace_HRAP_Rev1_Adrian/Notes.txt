@@ -1,0 +1,202 @@
+HEM model does initial search for P crit then only searches left of this point for subsequent steps
+the subsequen steps search in increments of 20 pa I think but am not sure that this gaurentees finding P crit atleas if you are still at a saturated pressure
+
+Dyer model curently uses injector inlet pressure = vapor pressure
+if K deviates need to verify kow K varies cuz the original paper disagrees with the cited papers on which one gets what.
+
+vent valve is an MV 74 listed CD of 0.6
+
+
+waterloo has very high L/D 11.923 for injector to gaurentee HEM model and simplify mass flow calcs ours is 0.0075/0.0015 = 5
+
+waterloo advises 3x feedline size vs injector area at all points cuz and slight pressure drop from flow will cause caviation.
+current feed area = 0.00013273 m^2
+current orifice area = 0.000106028 m^2
+required feed dia = 0.02m = 0.79in
+
+reason for huge pressure drop before boil of isss cux feed system adding large component of total volume that drop is just from liwuid jumping into the feed system before injector 
+
+for cold flow 3.2 data is somwhat clean from 1 - 2.5 seconds
+
+only reason ideal gas version of blowdonw works is cuz it is not checked via ideal gas law.I relize that his is atrotiously simplified and would throw it out if it didnt work so well.
+
+martins method does not include a vpor phase
+
+
+#################################################################################################################################
+Cold Flow 1 ICs (do not copy directly from here because it may overwite newly implemented settings)
+#################################################################################################################################
+
+%%%%% Simulation Parameters %%%%%
+%max sim time (s)
+t_max = 20;
+%time step (s)
+dt = 0.001;
+%cold flow
+cold_flow = true;
+
+%%%%% Atmospheric Properties %%%%%
+%atmospheric pressure (Pa)
+P_atm = 101325;
+%atmospheric temperature (K)
+T_atm = 293.15; 
+%atmosphric density (kg/m^3)
+rho_atm = 1.225;
+
+%%%%% Other Constants %%%%%
+%ideal gas constant (J/mol*K)
+R = 8.3145;
+%acceleration due to gravity (m/s^2)
+a_g = 9.81;
+
+%%%%% Tank Properties %%%%%
+%tank model (note: method 0 only works with nitrous oxide)
+%0 = HRAP Method (Nitrous Run Tank Emptying PDF)
+%1 = Internal Energy Method (Internal Energy Feed System PDF)
+model_tank = 1;
+%oxidizer tank fluid
+%0 = NOX
+%1 = CO2
+ox_type = 1;
+%oxidizer tank volume (m^3)
+V_tank = 0.00695;
+%initial tank temperature (K)
+T_tank = 279.422;
+%initial mass of oxidizer (kg)
+m_ox_total = 5.7834;
+
+%%%%% Vent Properties %%%%%
+%vent diameter (m)
+d_vent = 0.00211;
+%vent coefficient of discharge
+Cd_vent = 0.6;
+%vent state
+%0 = no vent
+%1 = vent vapor to atmosphere
+%2 = vent vapor to chamber
+state_vent = 1;
+%vapoor venting model
+%SPI_v = single phase invompressible vapor
+%PGC_v = perfect gass compresible vapor
+model_vent = 'PGC_v';
+
+%%%%% Injector Properties %%%%%
+%number of injector holes
+N_inj = 60;
+%diameter of injector holes (m)
+d_inj = 0.0015;
+%injector coefficient of discharge
+Cd_inj = 0.080;
+%liquid injector model
+%SPI = single phase incompressible
+%HEM = homgenous equilibrium model
+%Dyer = Dyer model
+model_inj_l = 'SPI';
+%vapoor injector model
+%SPI_v = single phase invompressible vapor
+%PGC_v = perfect gass compresible vapor
+model_inj_v = 'PGC_v';
+
+#################################################################################################################################
+Cold Flow 2 ICs (do not copy directly from here because it may overwite newly implemented settings)
+#################################################################################################################################
+
+%%%%% Simulation Parameters %%%%%
+%max sim time (s)
+t_max = 20;
+%time step (s)
+dt = 0.001;
+%cold flow
+cold_flow = true;
+
+%%%%% Atmospheric Properties %%%%%
+%atmospheric pressure (Pa)
+P_atm = 101325;
+%atmospheric temperature (K)
+T_atm = 293.15; 
+%atmosphric density (kg/m^3)
+rho_atm = 1.225;
+
+%%%%% Other Constants %%%%%
+%ideal gas constant (J/mol*K)
+R = 8.3145;
+%acceleration due to gravity (m/s^2)
+a_g = 9.81;
+
+%%%%% Tank Properties %%%%%
+%tank model (note: method 0 only works with nitrous oxide)
+%0 = HRAP Method (Nitrous Run Tank Emptying PDF)
+%1 = Internal Energy Method (Internal Energy Feed System PDF)
+model_tank = 1;
+%oxidizer tank fluid
+%0 = NOX
+%1 = CO2
+ox_type = 1;
+%oxidizer tank volume (m^3)
+V_tank = 0.00585;
+%initial tank temperature (K)
+T_tank = 285.52;%294.04;
+%initial mass of oxidizer (kg)
+m_ox_total = 4.309;
+
+%%%%% Vent Properties %%%%%
+%vent diameter (m)
+d_vent = 0.00211;
+%vent coefficient of discharge
+Cd_vent = 0.6;
+%vent state
+%0 = no vent
+%1 = vent vapor to atmosphere
+%2 = vent vapor to chamber
+state_vent = 0;
+%vapoor venting model
+%SPI_v = single phase invompressible vapor
+%PGC_v = perfect gass compresible vapor
+model_vent = 'PGC_v';
+
+%%%%% Injector Properties %%%%%
+%number of injector holes
+N_inj = 60;
+%diameter of injector holes (m)
+d_inj = 0.0015;
+%injector coefficient of discharge
+Cd_inj = 0.2;
+%liquid injector model
+%SPI = single phase incompressible
+%HEM = homgenous equilibrium model
+%Dyer = Dyer model
+model_inj_l = 'SPI';
+%vapoor injector model
+%SPI_v = single phase invompressible vapor
+%PGC_v = perfect gass compresible vapor
+model_inj_v = 'PGC_v';
+
+%%%%% Chamber Properties %%%%%
+%empty chamber volume (m^3)
+V_cmbr_empty = 0.0098;
+%initial combustion chamber pressure (Pa)
+P_cmbr = P_atm;
+%initial grain inner diameter (m)
+id_grn = 0.0711;
+%grain outer diameter (m)
+od_grn = 0.1016;
+%grain lenght (m)
+l_grn = 0.9144;
+%c_star efficiency
+c_star_eff = 0.8;
+%fuel grain density (kg/m^3)
+rho_fuel = 900;
+%regression coeficients
+a = 0.0876;
+n = 0.3953;
+m = 0;
+
+%%%%% Nozzle Properties %%%%%
+%nozzle throat diameter (m)
+d_noz_throat = 0.0348;
+%nozzle expansion ratio
+exp_ratio_noz = 4.0293;
+%nozzle efficiency
+eff_noz = 0.95;
+%nozzle coefficient of discharge
+Cd_noz = 0.9;

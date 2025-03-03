@@ -1,0 +1,58 @@
+-how are things being stored on redbull 2 if not parachute bay?
+
+***** transmitter *****
+
+-mounting holed need to be beefier pla abs all very brittle 
+
+-depending on how this attached to bulkhead screw switch sise shoudl conform to body tobe to eliminate possiblity of things getting in the way.
+
+-i can print the box if you send the file
+
+
+***** receiver box *****
+
+-why does rebullistic have altimiter and pico?
+
+-what is the oritation of box with respect to body 
+
+***** code ****
+
+- last year rocket had to catch the exact moment that the trensmitter sent the cut command and would not persist
+
+- if this is done we need to ammend revoery procedure to be carful of un fired line uctters 
+
+-7 step arming process
+
+***** PCB *****
+
+- Lets make sure we have multiple really good scre drivers for those terminal boxes
+-leds by the screw sitch
+
+
+***** parachute Bay ***
+
+- where are the transmitter electromics housed? 
+
+- what is the purpose fo the voud under the boxes?
+
+-what materail do you plan to 3d print this out of? 
+
+***** deployment ****
+
+use 3d printed burst disk
+
+how does it compare to blakc powder?
+
+can you bring it across the border?
+
+could you shove this full of blakc powder?
+
+**** parachute design *****
+
+L1/L2 rockets
+
+
+
+
+
+
