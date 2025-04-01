@@ -97,11 +97,11 @@ elseif state.m_ox_l >= state.m_l_unvaporized && state.m_ox_l > 0
         state.m_dot_vent = 0;
     elseif state.state_vent == 1
         state.delta_P_vent = state.P_tank - state.P_atm;
-        [m_dot,state] = Injector_Mass_Flow_Rev_1(state,state.model_vent,state.A_vent,state.Cd_vent,state.delta_P_vent);
+        [m_dot,state] = Mass_Flow(state,state.model_vent,state.A_vent,state.Cd_vent,state.delta_P_vent);
         state.m_dot_vent = m_dot;
     elseif state.state_vent == 2
         state.delta_P_vent = state.P_tank - state.P_cmbr;
-        [m_dot,state] = Injector_Mass_Flow_Rev_1(state,state.model_vent,state.A_vent,state.Cd_vent,state.delta_P_vent);
+        [m_dot,state] = Mass_Flow(state,state.model_vent,state.A_vent,state.Cd_vent,state.delta_P_vent);
         state.m_dot_vent = m_dot;
     end
     
